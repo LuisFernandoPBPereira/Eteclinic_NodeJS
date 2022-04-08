@@ -1,7 +1,8 @@
 //?===================================IMPORTS========================================
 
-import express  from "express";
+import express, { response }  from "express";
 import db from "../service/userService.js"
+import {body, validationResult} from 'express-validator'
 
 //?==================================================================================
 
@@ -17,15 +18,26 @@ router.get('/', (req, res) => {
 })
 
 //! usando post na rota principal
-router.post('/', async (req, res) => {
+//!yarn add express-validator
+router.post('/', [
+  body("email").isEmail().withMessage("Email informado é invalido.")
+], async (req, res) => {
 
+  //Inserindo validação em uma constante
+  const errors = validationResult(req)
+
+  //verificando se errors não é vazia
+  if(!errors.isEmpty()){
+    return res.status(400).json({message: errors.array()})
+  }
+  
   const {email, password, user} = req.body
   //Envia os dados para a userService.js
   await db.insertUser(email, password, user)
 
-  res.status(201).json({message:
-    "Cadastrei um novo usuário"
-  })
+    res.status(201).json({message:
+      "Cadastrei um novo usuário"
+    })  
 })
 
 //! exportando o módulo "router"
