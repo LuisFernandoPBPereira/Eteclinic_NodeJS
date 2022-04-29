@@ -11,11 +11,11 @@ import {body, validationResult} from 'express-validator'
 const router = express.Router()
 
 //! usando get na rota principal
-router.get('/', (req, res) => {
+// router.get('/', (req, res) => {
 
-  res.status(200).json({message:
-    "Silêncio muleire, num sou maix brazalairo, sou ungolano, purquie, independientemiente di comu estivuer sua voida, seija felis, SURAYA"})
-})
+//   res.status(200).json({message:
+//     "Silêncio muleire, num sou maix brazalairo, sou ungolano, purquie, independientemiente di comu estivuer sua voida, seija felis, SURAYA"})
+// })
 
 //! usando post na rota principal
 //!yarn add express-validator
@@ -36,7 +36,7 @@ router.post('/', [
   await db.insertUser(email, password, user)
 
     res.status(201).json({message:
-      "Cadastrei um novo usuário"
+      `${user} foi cadastrado`
     })  
 })
 
