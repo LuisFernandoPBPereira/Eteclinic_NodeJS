@@ -10,9 +10,9 @@ CREATE TABLE tbl_usuarios(
 );
 
 CREATE TABLE tbl_profissoes(
-	id_profissao int(11) primary key,
+	id_profissao int(11) primary key auto_increment,
     nome_profissao varchar(45),
-    profissao_deletada tinyint(1)
+    profissao_deletada tinyint(1) default 0
 );
 
 CREATE TABLE tbl_enderecos(
@@ -85,3 +85,4 @@ CREATE TABLE tbl_historicos_prontuarios(
     CONSTRAINT FK_id_atendimento FOREIGN KEY (FK_id_atendimento) REFERENCES tbl_atendimentos(id_atendimento)
 );
 
+SELECT * FROM tbl_profissoes;
