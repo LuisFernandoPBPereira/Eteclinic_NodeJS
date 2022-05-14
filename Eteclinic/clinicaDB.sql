@@ -16,7 +16,7 @@ CREATE TABLE tbl_profissoes(
 );
 
 CREATE TABLE tbl_enderecos(
-	id_endereco int(11) primary key,
+	id_endereco int(11) primary key auto_increment,
     cep int(10),
     rua varchar(45),
 	numero varchar(45),
@@ -26,7 +26,7 @@ CREATE TABLE tbl_enderecos(
 );
 
 CREATE TABLE tbl_especialistas(
-	id_especialista int(11) primary key,
+	id_especialista int(11) primary key auto_increment,
     registro varchar(45),
     nome_especialista varchar(45),
     telefone_especialista varchar(45),
@@ -41,7 +41,7 @@ CREATE TABLE tbl_especialistas(
 );
 
 CREATE TABLE tbl_clientes(
-	id_cliente int(11) primary key,
+	id_cliente int(11) primary key auto_increment,
     cpf varchar(11),
     nome_cliente varchar(45),
     telefone_cliente varchar(45),
@@ -55,7 +55,7 @@ CREATE TABLE tbl_clientes(
 );
 
 CREATE TABLE tbl_prontuarios(
-	id_prontuario int(11) primary key,
+	id_prontuario int(11) primary key auto_increment,
     data_prontuario date,
     FK_id_cliente int(11),
     
@@ -64,7 +64,7 @@ CREATE TABLE tbl_prontuarios(
 
 
 CREATE TABLE tbl_atendimentos(
-	id_atendimento int(11) primary key,
+	id_atendimento int(11) primary key auto_increment,
     data_agendada datetime,
     data_atendimento datetime,
     valor_atendimento decimal(6,2),
@@ -77,7 +77,7 @@ CREATE TABLE tbl_atendimentos(
 );
 
 CREATE TABLE tbl_historicos_prontuarios(
-	id_historico int(11) primary key,
+	id_historico int(11) primary key auto_increment,
     data_atendimento datetime,
     descricao text,
     FK_id_atendimento int(11),
@@ -85,4 +85,6 @@ CREATE TABLE tbl_historicos_prontuarios(
     CONSTRAINT FK_id_atendimento FOREIGN KEY (FK_id_atendimento) REFERENCES tbl_atendimentos(id_atendimento)
 );
 
-SELECT * FROM tbl_profissoes;
+SELECT * FROM tbl_enderecos;
+SELECT * FROM tbl_clientes;
+SELECT * FROM tbl_especialistas;
