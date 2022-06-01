@@ -3,5 +3,7 @@ function generatedPassword(){
   const newPassword = key.replace('n', '@').replace('w', '!')
   .replace('i', '#').replace('m', '*');
 
-  console.log(newPassword);
+  return newPassword;
 }
+
+export {generatedPassword}
