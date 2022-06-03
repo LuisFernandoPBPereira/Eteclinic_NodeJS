@@ -1,6 +1,7 @@
 import express from "express";
 import db from "../service/loginService.js"
 import { generatedPassword } from "../helpers/resetPassword.js";
+import { sendEmail } from "../helpers/sendEmail.js";
 
 const router = express.Router();
 
@@ -31,6 +32,7 @@ router.post('/reset', async(req, res) => {
 
    const passReseted =  await db.reset(email, password)
 
+   sendEmail(email, password)
    if(passReseted){
     res.status(200).json({
       message: `Senha atualizada`
