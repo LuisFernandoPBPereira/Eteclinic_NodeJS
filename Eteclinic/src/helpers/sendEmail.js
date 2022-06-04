@@ -6,7 +6,7 @@ const transporter = nodemailer.createTransport(config)
 function sendEmail(email, newPassword) {
   transporter.sendMail({
     subject:'Redefinição de Senha - Eteclinic',
-    from: 'Suporte Eteclinic <fernandoluispbp@gmail.com>',
+    from: 'Suporte Eteclinic <youremail@gmail.com>',
     to: `${email}`,
     html: `
     <html>
